@@ -55,10 +55,22 @@ export default function Home() {
   }
 
   return (
-    <div className="flex-1 flex items-center justify-center p-4">
+    <div className="flex-1 flex flex-col items-center py-12 sm:py-20 px-4">
+      {/* Hero Section */}
+      <div className="w-full max-w-3xl text-center mb-12 sm:mb-16">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-5">
+          <span className="text-white">Don&apos;t Be Afraid Man !</span>
+          <span className="text-[#82C21C]">Say Hello</span>
+        </h1>
+        <p className="text-[#9BA7A3] text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
+          Our Customer Care team are available for support Monday – Saturday from 9am to 7pm GMT.
+        </p>
+      </div>
+
+      {/* Form Section */}
       <div className="w-full max-w-[550px] p-8 sm:p-10 rounded-2xl bg-[#0b2e2b]/80 backdrop-blur-md border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
         <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-medium text-white mb-2 tracking-tight">Let&apos;s work together</h1>
+          <h2 className="text-2xl sm:text-3xl font-medium text-white mb-2 tracking-tight">Let&apos;s work together</h2>
           <p className="text-emerald-100/60 text-sm">Fill out the form below and we&apos;ll be in touch.</p>
         </div>
 

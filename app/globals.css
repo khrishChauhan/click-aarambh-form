@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --color-brand-emerald: #082220;
   --color-brand-emerald-light: #0b2e2b;
   --color-brand-green: #82C21C;
