@@ -59,8 +59,10 @@ export default function Home() {
       {/* Hero Section */}
       <div className="w-full max-w-3xl text-center mb-12 sm:mb-16">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-5">
-          <span className="text-white">Don&apos;t Be Afraid Man !</span>
-          <span className="text-[#82C21C]">Say Hello</span>
+          <span className="text-white">Don&apos;t Be Afraid Man ! </span>
+          <span className="text-[#82C21C]">
+            Say <span className="animate-soft-pulse">Hello</span>
+          </span>
         </h1>
         <p className="text-[#9BA7A3] text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
           Our Customer Care team are available for support Monday – Saturday from 9am to 7pm GMT.
