@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
+  const [countdown, setCountdown] = useState(5);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ export default function Home() {
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
+    setSubmittedName(data.name as string);
 
     try {
       const response = await fetch("/api/leads", {
@@ -36,31 +39,52 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    if (isSuccess && countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (isSuccess && countdown === 0) {
+      const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15550882852";
+      const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
+      const encodedMessage = encodeURIComponent(message);
+      window.location.href = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+    }
+  }, [isSuccess, countdown, submittedName]);
+
   if (isSuccess) {
+    const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15550882852";
+    const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
+    const encodedMessage = encodeURIComponent(message);
+    const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
     return (
-      <div className="flex-1 flex items-center justify-center p-4">
-        <div className="w-full max-w-[550px] p-10 rounded-2xl bg-[#0b2e2b]/80 backdrop-blur-md border border-white/5 shadow-2xl text-center space-y-4">
-          <div className="mx-auto w-16 h-16 rounded-full bg-[#82C21C]/20 flex items-center justify-center mb-6">
-            <svg className="w-8 h-8 text-[#82C21C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      <div className="flex-1 flex items-center justify-center p-4 min-h-screen relative z-10 w-full overflow-hidden">
+        <div className="w-full max-w-[550px] p-10 rounded-2xl bg-[#0b2e2b]/80 backdrop-blur-md border border-white/5 shadow-2xl text-center space-y-6">
+          <div className="mx-auto w-16 h-16 rounded-full bg-[#82C21C]/20 flex items-center justify-center mb-4 border border-[#82C21C]/30 relative overflow-hidden">
+             
+             {/* Simple visual indicator for WhatsApp */}
+            <svg className="w-8 h-8 text-[#82C21C] relative z-10 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+               <path d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 1.966.527 3.818 1.455 5.419l-1.454 4.58 4.792-1.258c1.545.86 3.327 1.259 5.206 1.259 5.519 0 9.997-4.477 9.997-9.999 0-5.522-4.478-9.999-9.997-9.999zm.006 17.5c-1.634 0-3.21-.439-4.597-1.261l-.33-.195-2.83.743.86-2.761-.215-.342c-.9-1.433-1.376-3.085-1.376-4.835 0-4.704 3.826-8.528 8.536-8.528 4.71 0 8.532 3.824 8.532 8.528 0 4.705-3.822 8.528-8.532 8.528h-.048z"/>
             </svg>
           </div>
-          <h2 className="text-2xl font-medium text-white">Message Sent</h2>
-          <p className="text-emerald-100/70">
-            Thank you for reaching out. We&apos;ll get back to you shortly.
+          <h2 className="text-3xl font-bold text-white tracking-tight">Thank you!</h2>
+          <p className="text-emerald-100/90 text-lg leading-relaxed">
+            We are redirecting you to WhatsApp to continue the conversation.
           </p>
-          <div className="mt-6 pt-6 border-t border-white/10">
-            <p className="text-white text-sm mb-4">Want a faster response? Continue our conversation over Telegram!</p>
+          
+          <div className="py-6 flex flex-col items-center justify-center">
+            <span className="text-5xl font-mono text-[#82C21C] font-extrabold tabular-nums transition-all">
+              {countdown}
+            </span>
+            <span className="text-emerald-100/50 text-sm mt-2 uppercase tracking-widest font-semibold">seconds remaining</span>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-white/10">
             <a 
-              href="https://t.me/clickrm_helper_bot" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#2AABEE] hover:bg-[#229ED9] text-white rounded-xl font-medium transition-all shadow-lg hover:shadow-[#2AABEE]/50"
+              href={waLink} 
+              className="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#82C21C] hover:bg-[#96d62d] text-[#082220] rounded-xl font-bold text-sm transition-all shadow-[0_0_20px_rgba(130,194,28,0.2)] hover:shadow-[0_0_25px_rgba(130,194,28,0.4)]"
             >
-              <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.94z"/>
-              </svg>
-              Start Chat on Telegram
+              CLICK HERE IF NOT REDIRECTED
             </a>
           </div>
         </div>
