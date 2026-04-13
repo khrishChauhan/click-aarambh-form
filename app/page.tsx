@@ -44,18 +44,18 @@ export default function Home() {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
       return () => clearTimeout(timer);
     } else if (isSuccess && countdown === 0) {
-      const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15550882852";
+      const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15556337541";
       const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
       const encodedMessage = encodeURIComponent(message);
-      window.location.href = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+      window.location.href = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
     }
   }, [isSuccess, countdown, submittedName]);
 
   if (isSuccess) {
-    const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15550882852";
+    const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15556337541";
     const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
     const encodedMessage = encodeURIComponent(message);
-    const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+    const waLink = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
 
     return (
       <div className="flex-1 flex items-center justify-center p-4 min-h-screen relative z-10 w-full overflow-hidden">
