@@ -44,7 +44,10 @@ export default function Home() {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
       return () => clearTimeout(timer);
     } else if (isSuccess && countdown === 0) {
-      const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15556337541";
+      // Force use of the specific sandbox number to bypass old Vercel env variables
+      const waNumber = "15556337541";
+      console.log(`Redirecting to WhatsApp: ${waNumber}`);
+      
       const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
       const encodedMessage = encodeURIComponent(message);
       window.location.href = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
@@ -52,7 +55,7 @@ export default function Home() {
   }, [isSuccess, countdown, submittedName]);
 
   if (isSuccess) {
-    const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "15556337541";
+    const waNumber = "15556337541";
     const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
     const encodedMessage = encodeURIComponent(message);
     const waLink = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
