@@ -102,7 +102,7 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-5">
           <span className="text-white">Don&apos;t Be Afraid Man ! </span>
           <span className="text-[#82C21C]">
-            Say <span className="animate-soft-pulse">Hello</span>
+            Say <span>Hello</span>
           </span>
         </h1>
         <p className="text-[#9BA7A3] text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
