@@ -46,7 +46,7 @@ export default function Home() {
       return () => clearTimeout(timer);
     } else if (isSuccess && countdown === 0) {
       const waNumber = "15556337541";
-      const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
+      const message = `Hi, I just submitted the Click Aarambh form. My name is ${submittedName} and I'm interested in your services.`;
       const encodedMessage = encodeURIComponent(message);
       window.location.href = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
     }
@@ -54,7 +54,7 @@ export default function Home() {
 
   if (isSuccess) {
     const waNumber = "15556337541";
-    const message = `Hi, I just submitted the ClickRM form. My name is ${submittedName} and I'm interested in your services.`;
+    const message = `Hi, I just submitted the Click Aarambh form. My name is ${submittedName} and I'm interested in your services.`;
     const encodedMessage = encodeURIComponent(message);
     const waLink = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
 
@@ -76,9 +76,9 @@ export default function Home() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-4xl font-bold text-[#CDE8E4] tracking-tight">Precision Received</h2>
+            <h2 className="text-4xl font-bold text-[#CDE8E4] tracking-tight">Message Received</h2>
             <p className="text-[#C2CAB1] text-lg leading-relaxed">
-              Redirecting to WhatsApp to finalize your request.
+              Connecting you to WhatsApp to continue the conversation.
             </p>
           </div>
 
@@ -86,7 +86,7 @@ export default function Home() {
             <span className="text-7xl font-mono text-[#9CDF3B] font-black tabular-nums">
               {countdown}
             </span>
-            <span className="text-[#C2CAB1] text-xs mt-4 uppercase tracking-[0.3em] font-semibold">Initiating Sync</span>
+            <span className="text-[#C2CAB1] text-xs mt-4 uppercase tracking-[0.3em] font-semibold">Redirecting shortly</span>
           </div>
 
           <div className="pt-8">
@@ -94,7 +94,7 @@ export default function Home() {
               href={waLink}
               className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#82C21C] hover:brightness-110 text-[#112000] rounded-2xl font-bold text-sm transition-all shadow-[0_15px_35px_-10px_rgba(130,194,28,0.4)] hover:-translate-y-1 active:translate-y-0"
             >
-              CLICK TO SYNC NOW
+              OPEN WHATSAPP
             </a>
           </div>
         </motion.div>
@@ -124,11 +124,11 @@ export default function Home() {
           className="hidden md:flex flex-col gap-6 w-1/3"
         >
           <div className="flex flex-col gap-2">
-            <span className="text-[#9CDF3B] font-semibold tracking-widest text-[10px] uppercase">Concierge Access</span>
-            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-none text-[#CDE8E4]">Submerged <br /> Precision</h1>
+            <span className="text-[#9CDF3B] font-semibold tracking-widest text-[10px] uppercase">Contact Us</span>
+            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-none text-[#CDE8E4]">Click <br /> Aarambh</h1>
           </div>
           <p className="text-[#C2CAB1] text-sm leading-relaxed max-w-xs">
-            Enter our private ecosystem. A bespoke interface designed for those who value quiet sophistication and intentional data management.
+            We're here to help you scale your business. Reach out to discuss your projects or any questions you have.
           </p>
           
           <div className="flex flex-col gap-4 mt-4">
@@ -155,8 +155,8 @@ export default function Home() {
         >
           <div className="flex flex-col gap-6 w-full">
             <div className="flex flex-col gap-1">
-              <h2 className="text-2xl font-semibold text-[#CDE8E4] tracking-tight">Initiate Inquiry</h2>
-              <p className="text-xs text-[#C2CAB1] opacity-70">Please provide your credentials below.</p>
+              <h2 className="text-2xl font-semibold text-[#CDE8E4] tracking-tight">Send a message</h2>
+              <p className="text-xs text-[#C2CAB1] opacity-70">Fill out the form below and we'll get back to you shortly.</p>
             </div>
 
             {error && (
@@ -167,14 +167,14 @@ export default function Home() {
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="flex flex-col gap-1 input-focus-line group">
-                <label htmlFor="name" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Full Name</label>
-                <input required type="text" id="name" name="name" placeholder="ALEXANDER VANCE" className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg placeholder:text-[#C2CAB1]/30 text-[#CDE8E4] w-full" />
+                <label htmlFor="name" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Your Name</label>
+                <input required type="text" id="name" name="name" placeholder="John Doe" className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg placeholder:text-[#C2CAB1]/30 text-[#CDE8E4] w-full" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1 input-focus-line group">
-                  <label htmlFor="email" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Email Address</label>
-                  <input required type="email" id="email" name="email" placeholder="vance@emerald.io" className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg placeholder:text-[#C2CAB1]/30 text-[#CDE8E4] w-full" />
+                  <label htmlFor="email" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Email</label>
+                  <input required type="email" id="email" name="email" placeholder="john@example.com" className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg placeholder:text-[#C2CAB1]/30 text-[#CDE8E4] w-full" />
                 </div>
                 <div className="flex flex-col gap-1 input-focus-line group">
                   <label htmlFor="phone" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Phone</label>
@@ -183,19 +183,19 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col gap-1 input-focus-line group">
-                <label htmlFor="service" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Service Selection</label>
+                <label htmlFor="service" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Requested Service</label>
                 <select required id="service" name="service" defaultValue="" className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg text-[#CDE8E4] w-full appearance-none cursor-pointer">
                   <option value="" disabled className="bg-[#051F1D]">Choose a service...</option>
-                  <option value="wealth" className="bg-[#051F1D]">Wealth Management Architecture</option>
-                  <option value="private" className="bg-[#051F1D]">Private Asset Intelligence</option>
-                  <option value="enterprise" className="bg-[#051F1D]">Enterprise Logistics Node</option>
+                  <option value="wealth" className="bg-[#051F1D]">Wealth Management</option>
+                  <option value="private" className="bg-[#051F1D]">Asset Strategy</option>
+                  <option value="enterprise" className="bg-[#051F1D]">Business Logistics</option>
                   <option value="other" className="bg-[#051F1D]">Other Inquiry</option>
                 </select>
               </div>
 
               <div className="flex flex-col gap-1 input-focus-line group">
                 <label htmlFor="message" className="text-[10px] font-semibold uppercase tracking-widest text-[#C2CAB1] transition-colors group-focus-within:text-[#9CDF3B] ml-1">Message</label>
-                <textarea required id="message" name="message" placeholder="Define your objective..." rows={2} className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg placeholder:text-[#C2CAB1]/30 text-[#CDE8E4] w-full resize-none" />
+                <textarea required id="message" name="message" placeholder="How can we help?" rows={2} className="bg-[#152e2c]/40 border-none outline-none focus:ring-0 text-sm py-3 px-4 rounded-lg placeholder:text-[#C2CAB1]/30 text-[#CDE8E4] w-full resize-none" />
               </div>
 
               <button
@@ -209,11 +209,11 @@ export default function Home() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    SYNCING...
+                    SENDING...
                   </span>
                 ) : (
                   <>
-                    Initiate Contact
+                    Send Message
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                   </>
                 )}
